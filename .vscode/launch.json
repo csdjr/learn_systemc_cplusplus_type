@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "${fileDirname}/",
+      "environment": [
+        {
+          "name": "LD_LIBRARY_PATH",
+          "value": "${LD_LIBRARY_PATH}:/usr/local/systemc-2.3.1/lib-linux64"   //动态库路径
+        }
+      ],
+      "program": "${workspaceFolder}/build/${fileBasenameNoExtension}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "externalConsole": false,
+      //"preLaunchTask": "C/C++: cpp 生成活动文件"
+    }
+  ]
+}
