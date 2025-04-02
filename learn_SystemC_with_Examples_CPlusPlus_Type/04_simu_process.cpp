@@ -1,6 +1,7 @@
 // Learn with Examples, 2020, MIT license
 
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -17,20 +18,20 @@ public:
 
 private:
 	void method() {
-		cout << "method: " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "method: " << sc_time_stamp() << endl;
 		next_trigger(sc_time(1, SC_SEC));
 	}
 
 	void thread() {
 		while (true) {
-			cout << "thread: " << sc_time_stamp() << endl;
+			LOG(DEBUG) << "thread: " << sc_time_stamp() << endl;
 			wait(2, SC_SEC);
 		}
 	}
 
 	void cthread() {
 		while (true) {
-			cout << "cthread: " << sc_time_stamp() << endl;
+			LOG(DEBUG) << "cthread: " << sc_time_stamp() << endl;
 			wait();
 		}
 	}
@@ -40,6 +41,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start(10, SC_SEC);
 	return 0;

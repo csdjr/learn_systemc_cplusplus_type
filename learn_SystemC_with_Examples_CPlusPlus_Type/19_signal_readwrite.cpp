@@ -1,5 +1,6 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -15,16 +16,16 @@ public:
 private:
 	void readWrite() {
 		s.write(3);
-		cout << "s = " << s << ";" << s.read() << endl;
+		LOG(DEBUG) << "s = " << s << ";" << s.read() << endl;
 		wait(SC_ZERO_TIME);
-		cout << "after delta_cycle,s = " << s << endl;
-		cout << "----------------------------" << endl;
+		LOG(DEBUG) << "after delta_cycle,s = " << s << endl;
+		LOG(DEBUG) << "----------------------------" << endl;
 		s = 4;
 		s = 5;
 		int tmp = s;
-		cout << "s = " << tmp << endl;
+		LOG(DEBUG) << "s = " << tmp << endl;
 		wait(SC_ZERO_TIME);
-		cout << "after delta_cycle,s = " << s << endl;
+		LOG(DEBUG) << "after delta_cycle,s = " << s << endl;
 	}
 
 private:
@@ -32,6 +33,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start();
 	return 0;

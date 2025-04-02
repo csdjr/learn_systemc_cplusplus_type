@@ -1,5 +1,6 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -32,21 +33,21 @@ private:
 		while (true) {
 			wait(b.default_event());
 			if (b.posedge())
-				cout << sc_time_stamp() << ": consumer receives posedge, b = " << b << endl;
+				LOG(DEBUG) << sc_time_stamp() << ": consumer receives posedge, b = " << b << endl;
 			else
-				cout << sc_time_stamp() << ": consumer receives negedge, b = " << b << endl;
+				LOG(DEBUG) << sc_time_stamp() << ": consumer receives negedge, b = " << b << endl;
 		}
 	}
 
 	void consumer_pos() {
 		while (true) {
 			wait(b.posedge_event());
-			cout << sc_time_stamp() << ": consumer_pos receives posedge, b = " << b << endl;
+			LOG(DEBUG) << sc_time_stamp() << ": consumer_pos receives posedge, b = " << b << endl;
 		}
 	}
 
 	void consumer_neg() {
-		cout << sc_time_stamp() << ": consumer_neg receives negedge, b = " << b << endl;
+		LOG(DEBUG) << sc_time_stamp() << ": consumer_neg receives negedge, b = " << b << endl;
 	}
 
 private:
@@ -54,6 +55,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start(4, SC_SEC);
 	return 0;

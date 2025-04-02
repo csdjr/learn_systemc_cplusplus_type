@@ -3,6 +3,7 @@
 #include "sysc/kernel/sc_spawn.h"
 #include <iostream>
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -39,11 +40,11 @@ public:
 
 	void target() {
 		q = 0;
-		cout << sc_time_stamp() << " q:" << q << endl;
+		LOG(DEBUG) << sc_time_stamp() << " q:" << q << endl;
 		while (1) {
 			wait(ev);
 			++q;
-			cout << sc_time_stamp() << " q:" << q << endl;
+			LOG(DEBUG) << sc_time_stamp() << " q:" << q << endl;
 		}
 	}
 
@@ -54,6 +55,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	M m("m");
 	sc_start(1000, SC_NS);
 }

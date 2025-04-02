@@ -3,6 +3,7 @@
 #include "sysc/kernel/sc_spawn.h"
 #include <iostream>
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -26,28 +27,28 @@ public:
 
 	void calling() {
 		assert(t.valid());
-		cout << t.name() << endl;
-		cout << t.proc_kind() << endl;
+		LOG(DEBUG) << t.name() << endl;
+		LOG(DEBUG) << t.proc_kind() << endl;
 
 		wait(20, SC_NS);
 		t.suspend();
-		cout << "t.suspend() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.suspend() " << sc_time_stamp() << endl;
 		wait(20, SC_NS);
 		t.resume();
-		cout << "t.resume() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.resume() " << sc_time_stamp() << endl;
 
 		wait(110, SC_NS);
 		t.suspend();
-		cout << "t.suspend() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.suspend() " << sc_time_stamp() << endl;
 		wait(200, SC_NS);
 		t.resume();
-		cout << "t.resume() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.resume() " << sc_time_stamp() << endl;
 	}
 
 	void target() {
 		while (1) {
 			wait(ev);
-			cout << "target:" << sc_time_stamp() << endl;
+			LOG(DEBUG) << "target:" << sc_time_stamp() << endl;
 		}
 	}
 
@@ -55,7 +56,7 @@ public:
 		while (1) {
 			wait(100, SC_NS);
 			ev.notify();
-			cout << "tick notify " << sc_time_stamp() << endl;
+			LOG(DEBUG) << "tick notify " << sc_time_stamp() << endl;
 		}
 	}
 
@@ -65,6 +66,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	M m("m");
 	sc_start(1000, SC_NS);
 }

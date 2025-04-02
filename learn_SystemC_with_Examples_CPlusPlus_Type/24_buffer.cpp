@@ -1,5 +1,6 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -29,13 +30,13 @@ private:
 	void reader_buffer() {
 		while (true) {
 			wait(b.default_event());
-			cout << sc_time_stamp() << " reader_buffer receive " << b << endl;
+			LOG(DEBUG) << sc_time_stamp() << " reader_buffer receive " << b << endl;
 		}
 	}
 	void reader_signal() {
 		while (true) {
 			wait(s.default_event());
-			cout << "---- " << sc_time_stamp() << " reader_signal receive " << s << endl;
+			LOG(DEBUG) << "---- " << sc_time_stamp() << " reader_signal receive " << s << endl;
 		}
 	}
 
@@ -45,6 +46,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start(8, SC_SEC);
 	return 0;

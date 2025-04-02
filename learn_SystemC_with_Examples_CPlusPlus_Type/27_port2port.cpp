@@ -1,5 +1,6 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -43,7 +44,7 @@ private:
 		while (true) {
 			wait(p->default_event()); // IF* operator -> (); calls the write method of the outside channel.
 			i = p->read();
-			cout << sc_time_stamp() << " reader receive " << i << endl;
+			LOG(DEBUG) << sc_time_stamp() << " reader receive " << i << endl;
 		}
 	}
 };
@@ -79,6 +80,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule1 m1("m1");
 	MyModule2 m2("m2");
 	sc_signal<int> s;

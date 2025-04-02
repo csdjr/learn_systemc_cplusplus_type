@@ -3,6 +3,7 @@
 #include "sysc/kernel/sc_spawn.h"
 #include <iostream>
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -23,28 +24,28 @@ public:
 
 	void calling() {
 		assert(target_handler.valid());
-		cout << target_handler.name() << endl;
-		cout << target_handler.proc_kind() << endl;
+		LOG(DEBUG) << target_handler.name() << endl;
+		LOG(DEBUG) << target_handler.proc_kind() << endl;
 
 		wait(20, SC_NS);
 		target_handler.suspend();
-		cout << "target.suspend()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.suspend()" << sc_time_stamp() << endl;
 		wait(20, SC_NS);
 		target_handler.resume();
-		cout << "target.resume()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.resume()" << sc_time_stamp() << endl;
 
 		wait(110, SC_NS);
 		target_handler.suspend();
-		cout << "target.suspend()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.suspend()" << sc_time_stamp() << endl;
 		wait(200, SC_NS);
 		target_handler.resume();
-		cout << "target.resume()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.resume()" << sc_time_stamp() << endl;
 	}
 
 	void target() {
 		while (1) {
 			wait(100, SC_NS);
-			cout << "target:" << sc_time_stamp() << endl;
+			LOG(DEBUG) << "target:" << sc_time_stamp() << endl;
 		}
 	}
 
@@ -53,6 +54,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	M m("m");
 	sc_start(1000, SC_NS);
 }

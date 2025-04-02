@@ -1,6 +1,8 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
 #include <vector> // used to define a vector of ports
+#include "utils/single_file_log.h"
+
 using namespace sc_core;
 
 SC_MODULE(WRITER) {
@@ -43,19 +45,20 @@ SC_MODULE(READER) {
   }
   void reader7() {
     while (true) {
-      std::cout << sc_time_stamp() << "; reader7, port 0/1/2 = " << p7[0]->read() << "/" << p7[1]->read() << "/" << p7[2]->read() << std::endl;
+      std::LOG(DEBUG) << sc_time_stamp() << "; reader7, port 0/1/2 = " << p7[0]->read() << "/" << p7[1]->read() << "/" << p7[2]->read() << std::endl;
       wait();
     }
   }
   void reader9() {
     while (true) {
-      std::cout << sc_time_stamp() << "; reader9, port 0/1/2 = " << p9[0]->read() << "/" << p9[1]->read() << "/" << p9[2]->read() << std::endl;
+      std::LOG(DEBUG) << sc_time_stamp() << "; reader9, port 0/1/2 = " << p9[0]->read() << "/" << p9[1]->read() << "/" << p9[2]->read() << std::endl;
       wait();
     }
   }
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
   WRITER writer("writer"); // instantiate writer
   READER reader("reader"); // instantiate reader
   // declare channels

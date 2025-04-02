@@ -1,4 +1,5 @@
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -23,7 +24,7 @@ private:
 	}
 
 	void method() {
-		cout << sc_time_stamp() << " receive event notify." << endl;
+		LOG(DEBUG) << sc_time_stamp() << " receive event notify." << endl;
 	}
 
 private:
@@ -31,6 +32,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	A a("a");
 	sc_start(4, SC_SEC);
 	return 0;

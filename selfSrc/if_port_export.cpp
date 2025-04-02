@@ -1,4 +1,5 @@
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace sc_core;
 using namespace std;
@@ -29,7 +30,7 @@ public:
 	}
 	virtual const char* kind() const override { return "MyExport"; }
 	virtual void write(int val) override {
-		cout << sname << ":" << val << endl;
+		LOG(DEBUG) << sname << ":" << val << endl;
 	}
 
 private:
@@ -76,6 +77,7 @@ public:
 
 //==================================================
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	A a("a");
 	B b1("b1"), b2("b2");
 	a.p.bind(b1.p);

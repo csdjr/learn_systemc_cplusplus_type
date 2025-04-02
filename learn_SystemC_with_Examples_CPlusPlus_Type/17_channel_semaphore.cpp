@@ -1,6 +1,7 @@
 // Learn with Examples, 2020, MIT license
 
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -20,15 +21,15 @@ private:
 		while (true) {
 			if (s.trywait() == -1) {
 				s.wait();
-				cout << sc_time_stamp() << " thread1 obtain semaphore by wait()"
+				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain semaphore by wait()"
 				     << " s.get_value() =" << s.get_value() << endl;
 			} else {
-				cout << sc_time_stamp() << " thread1 obtain semaphore by trywait() ***"
+				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain semaphore by trywait() ***"
 				     << " s.get_value() =" << s.get_value() << endl;
 			}
 			wait(1, SC_SEC);
 			s.post();
-			cout << sc_time_stamp() << " thread1 release semaphore by post()"
+			LOG(DEBUG) << sc_time_stamp() << " thread1 release semaphore by post()"
 			     << " s.get_value() =" << s.get_value() << endl;
 			wait(SC_ZERO_TIME);
 		}
@@ -37,15 +38,15 @@ private:
 		while (true) {
 			if (s.trywait() == -1) {
 				s.wait();
-				cout << sc_time_stamp() << " thread2 obtain semaphore by wait()"
+				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain semaphore by wait()"
 				     << " s.get_value() =" << s.get_value() << endl;
 			} else {
-				cout << sc_time_stamp() << " thread2 obtain semaphore by trywait() ***"
+				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain semaphore by trywait() ***"
 				     << " s.get_value() =" << s.get_value() << endl;
 			}
 			wait(1, SC_SEC);
 			s.post();
-			cout << sc_time_stamp() << " thread2 release semaphore by post()"
+			LOG(DEBUG) << sc_time_stamp() << " thread2 release semaphore by post()"
 			     << " s.get_value() =" << s.get_value() << endl;
 			wait(SC_ZERO_TIME);
 		}
@@ -54,15 +55,15 @@ private:
 		while (true) {
 			if (s.trywait() == -1) {
 				s.wait();
-				cout << sc_time_stamp() << " thread3 obtain semaphore by wait()"
+				LOG(DEBUG) << sc_time_stamp() << " thread3 obtain semaphore by wait()"
 				     << " s.get_value() =" << s.get_value() << endl;
 			} else {
-				cout << sc_time_stamp() << " thread3 obtain semaphore by trywait() ***"
+				LOG(DEBUG) << sc_time_stamp() << " thread3 obtain semaphore by trywait() ***"
 				     << " s.get_value() =" << s.get_value() << endl;
 			}
 			wait(1, SC_SEC);
 			s.post();
-			cout << sc_time_stamp() << " thread3 release semaphore by post()"
+			LOG(DEBUG) << sc_time_stamp() << " thread3 release semaphore by post()"
 			     << " s.get_value() =" << s.get_value() << endl;
 			wait(SC_ZERO_TIME);
 		}
@@ -73,6 +74,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start(4, SC_SEC);
 	return 0;

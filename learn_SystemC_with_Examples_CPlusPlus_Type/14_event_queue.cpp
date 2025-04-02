@@ -1,6 +1,7 @@
 // Learn with Examples, 2020, MIT license
 
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -28,13 +29,13 @@ private:
 	void catch_e() {
 		while (true) {
 			wait(e);
-			cout << sc_time_stamp() << " catch e" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " catch e" << endl;
 		}
 	}
 	void catch_eq() {
 		while (true) {
 			wait(eq.default_event());
-			cout << sc_time_stamp() << " catch eq" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " catch eq" << endl;
 		}
 	}
 
@@ -44,6 +45,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start(20, SC_SEC);
 	return 0;

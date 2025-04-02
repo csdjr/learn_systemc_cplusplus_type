@@ -13,7 +13,7 @@ AlignConsecutiveMacros: None
 # 连续赋值时，对齐所有等号
 AlignConsecutiveAssignments: None
 # 对齐连续位字段
-AlignConsecutiveBitFields: None
+AlignConsecutiveBitFields: Consecutive
 # 连续声明时，对齐所有声明的变量名
 AlignConsecutiveDeclarations: None
 # 左对齐逃脱换行(使用反斜杠换行)的反斜杠
@@ -118,23 +118,23 @@ ForEachMacros:
 IfMacros:
   - KJ_IF_MAYBE
 # 多个#include块合并在一起并排序为一个
-IncludeBlocks:   Merge
-# 可以定义负数优先级从而保证某些#include永远在最前面
-IncludeCategories:
-  - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
-    Priority:        2
-    SortPriority:    0
-    CaseSensitive:   false
-  - Regex:           '^(<|"(gtest|gmock|isl|json)/)'
-    Priority:        3
-    SortPriority:    0
-    CaseSensitive:   false
-  - Regex:           '.*'
-    Priority:        1
-    SortPriority:    0
-    CaseSensitive:   false
-IncludeIsMainRegex: '(Test)?$'
-IncludeIsMainSourceRegex: ''
+#IncludeBlocks:   Merge
+## 可以定义负数优先级从而保证某些#include永远在最前面
+#IncludeCategories:
+#  - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
+#    Priority:        2
+#    SortPriority:    0
+#    CaseSensitive:   false
+#  - Regex:           '^(<|"(gtest|gmock|isl|json)/)'
+#    Priority:        3
+#    SortPriority:    0
+#    CaseSensitive:   false
+#  - Regex:           '.*'
+#    Priority:        1
+#    SortPriority:    0
+#    CaseSensitive:   false
+#IncludeIsMainRegex: '(Test)?$'
+#IncludeIsMainSourceRegex: ''
 # 缩进访问修饰符
 IndentAccessModifiers: false
 # 缩进case标签
@@ -199,7 +199,7 @@ ReflowComments:  true
 # 短命名空间跨越的最大展开行数
 ShortNamespaceLines: 1
 # 允许排序#include
-SortIncludes:    CaseSensitive
+SortIncludes:    false
 # java静态导入放在非静态导入之前
 SortJavaStaticImport: Before
 # 对using声明排序

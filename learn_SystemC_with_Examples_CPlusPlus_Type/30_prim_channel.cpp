@@ -1,5 +1,6 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -52,7 +53,7 @@ private:
 	void rcv_interrupt() {
 		while (true) {
 			wait(p->default_event());
-			cout << sc_time_stamp() << " receive interrupt" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " receive interrupt" << endl;
 		}
 	}
 };
@@ -78,6 +79,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	InterruptChannel intrChannel("InterruptChannel");
 	GenInterrupt gen("gen");
 	Receiver rcv("rcv");

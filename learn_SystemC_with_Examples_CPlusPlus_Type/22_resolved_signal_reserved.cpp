@@ -1,6 +1,8 @@
 // Learn with Examples, 2020, MIT license
 #include <systemc>
 #include <vector> // use c++  vector lib
+#include "utils/single_file_log.h"
+
 using namespace sc_core;
 using namespace sc_dt; // sc_logic defined here
 using std::vector;     // use namespace for vector
@@ -32,9 +34,9 @@ SC_MODULE(RESOLVED_SIGNAL) {
 		wait(1, SC_SEC); // delay read by 1 s
 		int idx = 0;
 		while (true) {
-			std::cout << " " << rv.read() << " |"; // print the read value (writer1 and writer2 resolved)
+			std::LOG(DEBUG) << " " << rv.read() << " |"; // print the read value (writer1 and writer2 resolved)
 			if (++idx % 4 == 0) {
-				std::cout << std::endl;
+				std::LOG(DEBUG) << std::endl;
 			}                // print a new line every 4 values
 			wait(1, SC_SEC); // read every 1 s
 		}
@@ -42,6 +44,7 @@ SC_MODULE(RESOLVED_SIGNAL) {
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	RESOLVED_SIGNAL resolved("resolved");
 	sc_start(17, SC_SEC); // runs sufficient time to test all 16 resolve combinations
 	return 0;

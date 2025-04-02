@@ -6,6 +6,10 @@
     "editor.quickSuggestionsDelay": 0,
     "explorer.autoReveal":"focusNoScroll",
     "workbench.editor.enablePreview": false,
+    "highlightwords.box": {
+        "light": false,
+        "dark": false
+    },
     "files.associations": {
         "array": "cpp",
         "atomic": "cpp",

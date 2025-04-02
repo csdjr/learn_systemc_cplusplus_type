@@ -1,6 +1,7 @@
 // Learn with Examples, 2020, MIT license
 
 #include <systemc>
+#include "utils/single_file_log.h"
 
 using namespace std;
 using namespace sc_core;
@@ -36,11 +37,11 @@ private:
 		while (true) {
 			wait(s1.default_event() | s2.default_event()); // note: wait的对象是一个sc_event. 把default_event()去掉,编译通过，运行失败.
 			if (s1.event() == true && s2.event() == true)
-				cout << sc_time_stamp() << " s1&s2 triggered." << endl;
+				LOG(DEBUG) << sc_time_stamp() << " s1&s2 triggered." << endl;
 			else if (s1.event() == true)
-				cout << sc_time_stamp() << " s1 triggered." << endl;
+				LOG(DEBUG) << sc_time_stamp() << " s1 triggered." << endl;
 			else
-				cout << sc_time_stamp() << " s2 triggered." << endl;
+				LOG(DEBUG) << sc_time_stamp() << " s2 triggered." << endl;
 		}
 	}
 
@@ -49,6 +50,7 @@ private:
 };
 
 int sc_main(int, char*[]) {
+	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start(10, SC_SEC);
 	return 0;
