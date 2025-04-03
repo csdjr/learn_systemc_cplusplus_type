@@ -26,18 +26,18 @@ private:
 
 	void catcher1() {
 		wait(e1 | e2);
-		LOG(DEBUG) << sc_time_stamp() << " catcher1" << endl; //  catch e1
+		LOG(DEBUG) << sc_time_stamp() << " catcher1"; //  catch e1
 	}
 
 	void catcher2() {
 		wait(e1 & e2);
-		LOG(DEBUG) << sc_time_stamp() << " catcher2" << endl; //  catch e1 & e2
+		LOG(DEBUG) << sc_time_stamp() << " catcher2"; //  catch e1 & e2
 	}
 
 	void catcher3() {
 		wait(sc_time(2, SC_SEC), e3);
 		LOG(DEBUG) << sc_time_stamp()
-		     << " catcher3: " << (e3.triggered() ? "e3" : "timeout") << endl;
+		     << " catcher3: " << (e3.triggered() ? "e3" : "timeout");
 	}
 
 private:

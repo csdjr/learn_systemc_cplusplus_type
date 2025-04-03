@@ -20,7 +20,7 @@ SC_MODULE(FIFO) {
     int v = 0;
     while (true) {
       f1.write(v); // same as f = v, which is not recommended.
-      std::LOG(DEBUG) << sc_time_stamp() << ": generator1 writes " << v++ << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": generator1 writes " << v++;
       wait(1, SC_SEC); // write every 1 s
     }
   }
@@ -28,7 +28,7 @@ SC_MODULE(FIFO) {
     int v = -1;
     while (true) {
       f1.read(v); // same as v = int(f), which is not recommended; or, v = f1.read();
-      std::LOG(DEBUG) << sc_time_stamp() << ": consumer1 reads " << v << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": consumer1 reads " << v;
       wait(3, SC_SEC); // read every 3 s, fifo will fill up soon
     }
   }
@@ -38,7 +38,7 @@ SC_MODULE(FIFO) {
       while (f2.nb_write(v) == false ) { // nb write until succeeded
         wait(f2.data_read_event()); // if not successful, wait for data read (a fifo slot becomes available)
       }
-      std::LOG(DEBUG) << sc_time_stamp() << ": generator2 writes " << v++ << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": generator2 writes " << v++;
       wait(1, SC_SEC); // write every 1 s
     }
   }
@@ -48,25 +48,25 @@ SC_MODULE(FIFO) {
       while (f2.nb_read(v) == false) {
         wait(f2.data_written_event());
       }
-      std::LOG(DEBUG) << sc_time_stamp() << ": consumer2 reads " << v << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": consumer2 reads " << v;
       wait(3, SC_SEC); // read every 3 s, fifo will fill up soon
     }
   }
   void generator3() { // free/available slots before/after write
     int v = 0;
     while (true) {
-      std::LOG(DEBUG) << sc_time_stamp() << ": generator3, before write, #free/#available=" << f3.num_free() << "/" << f3.num_available() << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": generator3, before write, #free/#available=" << f3.num_free() << "/" << f3.num_available();
       f3.write(v++);
-      std::LOG(DEBUG) << sc_time_stamp() << ": generator3, after write, #free/#available=" << f3.num_free() << "/" << f3.num_available() << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": generator3, after write, #free/#available=" << f3.num_free() << "/" << f3.num_available();
       wait(1, SC_SEC);
     }
   }
   void consumer3() { // free/available slots before/after read
     int v = -1;
     while (true) {
-      std::LOG(DEBUG) << sc_time_stamp() << ": consumer3, before read, #free/#available=" << f3.num_free() << "/" << f3.num_available() << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": consumer3, before read, #free/#available=" << f3.num_free() << "/" << f3.num_available();
       f3.read(v);
-      std::LOG(DEBUG) << sc_time_stamp() << ": consumer3, after read, #free/#available=" << f3.num_free() << "/" << f3.num_available() << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << ": consumer3, after read, #free/#available=" << f3.num_free() << "/" << f3.num_available();
       wait(3, SC_SEC); // read every 3 s, fifo will fill up soon
     }
   }

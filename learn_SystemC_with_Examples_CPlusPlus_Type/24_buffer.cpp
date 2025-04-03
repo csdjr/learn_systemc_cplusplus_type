@@ -30,13 +30,13 @@ private:
 	void reader_buffer() {
 		while (true) {
 			wait(b.default_event());
-			LOG(DEBUG) << sc_time_stamp() << " reader_buffer receive " << b << endl;
+			LOG(DEBUG) << sc_time_stamp() << " reader_buffer receive " << b;
 		}
 	}
 	void reader_signal() {
 		while (true) {
 			wait(s.default_event());
-			LOG(DEBUG) << "---- " << sc_time_stamp() << " reader_signal receive " << s << endl;
+			LOG(DEBUG) << "---- " << sc_time_stamp() << " reader_signal receive " << s;
 		}
 	}
 

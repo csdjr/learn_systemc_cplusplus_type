@@ -16,16 +16,16 @@ public:
 private:
 	void readWrite() {
 		s.write(3);
-		LOG(DEBUG) << "s = " << s << ";" << s.read() << endl;
+		LOG(DEBUG) << "s = " << s << ";" << s.read();
 		wait(SC_ZERO_TIME);
-		LOG(DEBUG) << "after delta_cycle,s = " << s << endl;
-		LOG(DEBUG) << "----------------------------" << endl;
+		LOG(DEBUG) << "after delta_cycle,s = " << s;
+		LOG(DEBUG) << "----------------------------";
 		s = 4;
 		s = 5;
 		int tmp = s;
-		LOG(DEBUG) << "s = " << tmp << endl;
+		LOG(DEBUG) << "s = " << tmp;
 		wait(SC_ZERO_TIME);
-		LOG(DEBUG) << "after delta_cycle,s = " << s << endl;
+		LOG(DEBUG) << "after delta_cycle,s = " << s;
 	}
 
 private:

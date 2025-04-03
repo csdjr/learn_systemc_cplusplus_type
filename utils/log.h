@@ -260,14 +260,14 @@ protected:
 		    (logOutputCategory == LogOutputCategory::Stdout || logOutputCategory == LogOutputCategory::StdoutAndFile)) // 输出级别OK && 可以输出到stdout
 		{
 			if (LogGlobalInst->getHasPrefix())
-				std::cout << sPrefix.str().c_str() << stream.str().c_str();
+				std::cout << sPrefix.str().c_str() << stream.str().c_str() << std::endl;
 			else
-				std::cout << stream.str().c_str();
+				std::cout << stream.str().c_str() << std::endl;
 		}
 
 		// 输出到文件
 		if (logOutputCategory == LogOutputCategory::File || logOutputCategory == LogOutputCategory::StdoutAndFile) // 可以输出到file
-			LogGlobalInst->getFs() << sPrefix.str().c_str() << stream.str().c_str();
+			LogGlobalInst->getFs() << sPrefix.str().c_str() << stream.str().c_str() << std::endl;
 
 		// 恢复颜色
 		fprintf(stdout, "\033[m"); // Resets the terminal to default.

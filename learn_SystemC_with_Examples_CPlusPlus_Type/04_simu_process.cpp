@@ -18,20 +18,20 @@ public:
 
 private:
 	void method() {
-		LOG(DEBUG) << "method: " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "method: " << sc_time_stamp();
 		next_trigger(sc_time(1, SC_SEC));
 	}
 
 	void thread() {
 		while (true) {
-			LOG(DEBUG) << "thread: " << sc_time_stamp() << endl;
+			LOG(DEBUG) << "thread: " << sc_time_stamp();
 			wait(2, SC_SEC);
 		}
 	}
 
 	void cthread() {
 		while (true) {
-			LOG(DEBUG) << "cthread: " << sc_time_stamp() << endl;
+			LOG(DEBUG) << "cthread: " << sc_time_stamp();
 			wait();
 		}
 	}

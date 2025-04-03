@@ -62,7 +62,7 @@ private:
 	void reader() {
 		while (true) {
 			wait(c.default_event());
-			LOG(DEBUG) << sc_time_stamp() << " reader receive " << c.read() << endl;
+			LOG(DEBUG) << sc_time_stamp() << " reader receive " << c.read();
 		}
 	}
 

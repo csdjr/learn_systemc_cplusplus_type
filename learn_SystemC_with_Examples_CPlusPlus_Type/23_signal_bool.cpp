@@ -33,21 +33,21 @@ private:
 		while (true) {
 			wait(b.default_event());
 			if (b.posedge())
-				LOG(DEBUG) << sc_time_stamp() << ": consumer receives posedge, b = " << b << endl;
+				LOG(DEBUG) << sc_time_stamp() << ": consumer receives posedge, b = " << b;
 			else
-				LOG(DEBUG) << sc_time_stamp() << ": consumer receives negedge, b = " << b << endl;
+				LOG(DEBUG) << sc_time_stamp() << ": consumer receives negedge, b = " << b;
 		}
 	}
 
 	void consumer_pos() {
 		while (true) {
 			wait(b.posedge_event());
-			LOG(DEBUG) << sc_time_stamp() << ": consumer_pos receives posedge, b = " << b << endl;
+			LOG(DEBUG) << sc_time_stamp() << ": consumer_pos receives posedge, b = " << b;
 		}
 	}
 
 	void consumer_neg() {
-		LOG(DEBUG) << sc_time_stamp() << ": consumer_neg receives negedge, b = " << b << endl;
+		LOG(DEBUG) << sc_time_stamp() << ": consumer_neg receives negedge, b = " << b;
 	}
 
 private:

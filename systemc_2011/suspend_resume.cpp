@@ -24,28 +24,28 @@ public:
 
 	void calling() {
 		assert(target_handler.valid());
-		LOG(DEBUG) << target_handler.name() << endl;
-		LOG(DEBUG) << target_handler.proc_kind() << endl;
+		LOG(DEBUG) << target_handler.name();
+		LOG(DEBUG) << target_handler.proc_kind();
 
 		wait(20, SC_NS);
 		target_handler.suspend();
-		LOG(DEBUG) << "target.suspend()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.suspend()" << sc_time_stamp();
 		wait(20, SC_NS);
 		target_handler.resume();
-		LOG(DEBUG) << "target.resume()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.resume()" << sc_time_stamp();
 
 		wait(110, SC_NS);
 		target_handler.suspend();
-		LOG(DEBUG) << "target.suspend()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.suspend()" << sc_time_stamp();
 		wait(200, SC_NS);
 		target_handler.resume();
-		LOG(DEBUG) << "target.resume()" << sc_time_stamp() << endl;
+		LOG(DEBUG) << "target.resume()" << sc_time_stamp();
 	}
 
 	void target() {
 		while (1) {
 			wait(100, SC_NS);
-			LOG(DEBUG) << "target:" << sc_time_stamp() << endl;
+			LOG(DEBUG) << "target:" << sc_time_stamp();
 		}
 	}
 

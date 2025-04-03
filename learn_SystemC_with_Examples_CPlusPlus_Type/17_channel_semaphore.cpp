@@ -22,15 +22,15 @@ private:
 			if (s.trywait() == -1) {
 				s.wait();
 				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain semaphore by wait()"
-				     << " s.get_value() =" << s.get_value() << endl;
+				     << " s.get_value() =" << s.get_value();
 			} else {
 				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain semaphore by trywait() ***"
-				     << " s.get_value() =" << s.get_value() << endl;
+				     << " s.get_value() =" << s.get_value();
 			}
 			wait(1, SC_SEC);
 			s.post();
 			LOG(DEBUG) << sc_time_stamp() << " thread1 release semaphore by post()"
-			     << " s.get_value() =" << s.get_value() << endl;
+			     << " s.get_value() =" << s.get_value();
 			wait(SC_ZERO_TIME);
 		}
 	}
@@ -39,15 +39,15 @@ private:
 			if (s.trywait() == -1) {
 				s.wait();
 				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain semaphore by wait()"
-				     << " s.get_value() =" << s.get_value() << endl;
+				     << " s.get_value() =" << s.get_value();
 			} else {
 				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain semaphore by trywait() ***"
-				     << " s.get_value() =" << s.get_value() << endl;
+				     << " s.get_value() =" << s.get_value();
 			}
 			wait(1, SC_SEC);
 			s.post();
 			LOG(DEBUG) << sc_time_stamp() << " thread2 release semaphore by post()"
-			     << " s.get_value() =" << s.get_value() << endl;
+			     << " s.get_value() =" << s.get_value();
 			wait(SC_ZERO_TIME);
 		}
 	}
@@ -56,15 +56,15 @@ private:
 			if (s.trywait() == -1) {
 				s.wait();
 				LOG(DEBUG) << sc_time_stamp() << " thread3 obtain semaphore by wait()"
-				     << " s.get_value() =" << s.get_value() << endl;
+				     << " s.get_value() =" << s.get_value();
 			} else {
 				LOG(DEBUG) << sc_time_stamp() << " thread3 obtain semaphore by trywait() ***"
-				     << " s.get_value() =" << s.get_value() << endl;
+				     << " s.get_value() =" << s.get_value();
 			}
 			wait(1, SC_SEC);
 			s.post();
 			LOG(DEBUG) << sc_time_stamp() << " thread3 release semaphore by post()"
-			     << " s.get_value() =" << s.get_value() << endl;
+			     << " s.get_value() =" << s.get_value();
 			wait(SC_ZERO_TIME);
 		}
 	}

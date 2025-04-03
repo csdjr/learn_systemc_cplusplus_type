@@ -24,7 +24,7 @@ private:
 	}
 
 	void method() {
-		LOG(DEBUG) << sc_time_stamp() << " receive event notify." << endl;
+		LOG(DEBUG) << sc_time_stamp() << " receive event notify.";
 	}
 
 private:

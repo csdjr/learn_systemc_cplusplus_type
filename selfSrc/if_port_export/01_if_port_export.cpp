@@ -30,7 +30,7 @@ public:
 	}
 	virtual const char* kind() const override { return "MyExport"; }
 	virtual void write(int val) override {
-		LOG(DEBUG) << sname << ":" << val << endl;
+		LOG(DEBUG) << sname << ":" << val;
 	}
 
 private:

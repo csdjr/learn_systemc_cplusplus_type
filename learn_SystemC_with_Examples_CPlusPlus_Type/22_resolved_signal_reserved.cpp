@@ -34,9 +34,9 @@ SC_MODULE(RESOLVED_SIGNAL) {
 		wait(1, SC_SEC); // delay read by 1 s
 		int idx = 0;
 		while (true) {
-			std::LOG(DEBUG) << " " << rv.read() << " |"; // print the read value (writer1 and writer2 resolved)
+			LOG(DEBUG) << " " << rv.read() << " |"; // print the read value (writer1 and writer2 resolved)
 			if (++idx % 4 == 0) {
-				std::LOG(DEBUG) << std::endl;
+				LOG(DEBUG);
 			}                // print a new line every 4 values
 			wait(1, SC_SEC); // read every 1 s
 		}

@@ -6,13 +6,13 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
-                //"-std=c++14",
+                "-std=c++11",
                 "-g",
                 "-o0",
                 "${file}",
-                "-I/usr/local/systemc-2.3.1/include", //systemc头文件路径
+                "-I/usr/local/systemc-2.3.3/include", //systemc头文件路径
                 "-I${workspaceFolder}", //工作空间
-                "-L/usr/local/systemc-2.3.1/lib-linux64", //systemc库路径
+                "-L/usr/local/systemc-2.3.3/lib", //systemc库路径
                 "-o",
                 "${workspaceFolder}/build/${fileBasenameNoExtension}",
                 "-lsystemc"

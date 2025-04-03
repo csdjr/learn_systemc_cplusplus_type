@@ -20,13 +20,13 @@ private:
 		while (true) {
 			if (m.trylock() == -1) {
 				m.lock();
-				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain mutex by lock()" << endl;
+				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain mutex by lock()";
 			} else {
-				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain mutex by trylock()" << endl;
+				LOG(DEBUG) << sc_time_stamp() << " thread1 obtain mutex by trylock()";
 			}
 			wait(1, SC_SEC);
 			m.unlock();
-			LOG(DEBUG) << sc_time_stamp() << " thread1 release mutex by unlock()" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " thread1 release mutex by unlock()";
 			wait(SC_ZERO_TIME);
 		}
 	}
@@ -34,13 +34,13 @@ private:
 		while (true) {
 			if (m.trylock() == -1) {
 				m.lock();
-				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain mutex by lock()" << endl;
+				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain mutex by lock()";
 			} else {
-				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain mutex by trylock()" << endl;
+				LOG(DEBUG) << sc_time_stamp() << " thread2 obtain mutex by trylock()";
 			}
 			wait(1, SC_SEC);
 			m.unlock();
-			LOG(DEBUG) << sc_time_stamp() << " thread2 release mutex by unlock()" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " thread2 release mutex by unlock()";
 			wait(SC_ZERO_TIME);
 		}
 	}

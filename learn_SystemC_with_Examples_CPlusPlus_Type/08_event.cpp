@@ -28,7 +28,7 @@ private:
 	void catcher() {
 		while (true) {
 			wait(e); // cant`t receive at time = 5s
-			LOG(DEBUG) << "Event catch at " << sc_time_stamp() << endl;
+			LOG(DEBUG) << "Event catch at " << sc_time_stamp();
 		}
 	}
 

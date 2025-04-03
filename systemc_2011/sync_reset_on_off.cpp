@@ -43,11 +43,11 @@ public:
 
 	void target() {
 		q = 0;
-		LOG(DEBUG) << sc_time_stamp() << " q:" << q << endl;
+		LOG(DEBUG) << sc_time_stamp() << " q:" << q;
 		while (1) {
 			wait(ev);
 			++q;
-			LOG(DEBUG) << sc_time_stamp() << " q:" << q << endl;
+			LOG(DEBUG) << sc_time_stamp() << " q:" << q;
 		}
 	}
 

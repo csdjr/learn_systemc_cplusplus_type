@@ -37,11 +37,11 @@ private:
 		while (true) {
 			wait(s1.default_event() | s2.default_event()); // note: wait的对象是一个sc_event. 把default_event()去掉,编译通过，运行失败.
 			if (s1.event() == true && s2.event() == true)
-				LOG(DEBUG) << sc_time_stamp() << " s1&s2 triggered." << endl;
+				LOG(DEBUG) << sc_time_stamp() << " s1&s2 triggered.";
 			else if (s1.event() == true)
-				LOG(DEBUG) << sc_time_stamp() << " s1 triggered." << endl;
+				LOG(DEBUG) << sc_time_stamp() << " s1 triggered.";
 			else
-				LOG(DEBUG) << sc_time_stamp() << " s2 triggered." << endl;
+				LOG(DEBUG) << sc_time_stamp() << " s2 triggered.";
 		}
 	}
 

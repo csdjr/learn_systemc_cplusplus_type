@@ -45,13 +45,13 @@ SC_MODULE(READER) {
   }
   void reader7() {
     while (true) {
-      std::LOG(DEBUG) << sc_time_stamp() << "; reader7, port 0/1/2 = " << p7[0]->read() << "/" << p7[1]->read() << "/" << p7[2]->read() << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << "; reader7, port 0/1/2 = " << p7[0]->read() << "/" << p7[1]->read() << "/" << p7[2]->read();
       wait();
     }
   }
   void reader9() {
     while (true) {
-      std::LOG(DEBUG) << sc_time_stamp() << "; reader9, port 0/1/2 = " << p9[0]->read() << "/" << p9[1]->read() << "/" << p9[2]->read() << std::endl;
+      LOG(DEBUG) << sc_time_stamp() << "; reader9, port 0/1/2 = " << p9[0]->read() << "/" << p9[1]->read() << "/" << p9[2]->read();
       wait();
     }
   }

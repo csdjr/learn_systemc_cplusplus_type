@@ -29,13 +29,13 @@ private:
 	void catch_e() {
 		while (true) {
 			wait(e);
-			LOG(DEBUG) << sc_time_stamp() << " catch e" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " catch e";
 		}
 	}
 	void catch_eq() {
 		while (true) {
 			wait(eq.default_event());
-			LOG(DEBUG) << sc_time_stamp() << " catch eq" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " catch eq";
 		}
 	}
 

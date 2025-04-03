@@ -50,7 +50,7 @@ private:
 		while (true) {
 			wait(p->default_event()); // IF* operator -> (); calls the write method of the outside channel.
 			i = p->read();
-			LOG(DEBUG) << sc_time_stamp() << " reader receive " << i << endl;
+			LOG(DEBUG) << sc_time_stamp() << " reader receive " << i;
 		}
 	}
 };

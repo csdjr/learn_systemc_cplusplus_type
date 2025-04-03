@@ -27,28 +27,28 @@ public:
 
 	void calling() {
 		assert(t.valid());
-		LOG(DEBUG) << t.name() << endl;
-		LOG(DEBUG) << t.proc_kind() << endl;
+		LOG(DEBUG) << t.name();
+		LOG(DEBUG) << t.proc_kind();
 
 		wait(20, SC_NS);
 		t.suspend();
-		LOG(DEBUG) << "t.suspend() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.suspend() " << sc_time_stamp();
 		wait(20, SC_NS);
 		t.resume();
-		LOG(DEBUG) << "t.resume() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.resume() " << sc_time_stamp();
 
 		wait(110, SC_NS);
 		t.suspend();
-		LOG(DEBUG) << "t.suspend() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.suspend() " << sc_time_stamp();
 		wait(200, SC_NS);
 		t.resume();
-		LOG(DEBUG) << "t.resume() " << sc_time_stamp() << endl;
+		LOG(DEBUG) << "t.resume() " << sc_time_stamp();
 	}
 
 	void target() {
 		while (1) {
 			wait(ev);
-			LOG(DEBUG) << "target:" << sc_time_stamp() << endl;
+			LOG(DEBUG) << "target:" << sc_time_stamp();
 		}
 	}
 
@@ -56,7 +56,7 @@ public:
 		while (1) {
 			wait(100, SC_NS);
 			ev.notify();
-			LOG(DEBUG) << "tick notify " << sc_time_stamp() << endl;
+			LOG(DEBUG) << "tick notify " << sc_time_stamp();
 		}
 	}
 

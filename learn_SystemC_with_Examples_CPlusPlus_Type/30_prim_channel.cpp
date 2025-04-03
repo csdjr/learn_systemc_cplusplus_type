@@ -53,7 +53,7 @@ private:
 	void rcv_interrupt() {
 		while (true) {
 			wait(p->default_event());
-			LOG(DEBUG) << sc_time_stamp() << " receive interrupt" << endl;
+			LOG(DEBUG) << sc_time_stamp() << " receive interrupt";
 		}
 	}
 };
