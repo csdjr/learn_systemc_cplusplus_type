@@ -391,16 +391,16 @@ void AT_Master::initiator_thread() {
 		}
 		// TLM_UPDATED, END_REQ, t
 		else if (ret == TLM_UPDATED && phase == END_REQ) {
-			LOG(DEBUG) << "TLM_COMPLETED, -, t     wait(t)";
+			LOG(DEBUG) << "TLM_UPDATED, END_REQ, t     wait(t)";
 			//  Put poiter in waiting backware path map
 			//    Wait the annotated delay
 			//    Make the next requests
 			m_waiting_bw_path_map.insert(make_pair(trans, RCV_END_REQ));
 			wait(t);
 		}
-		//  TLM_UPDATED, END_REQ, t
+		//  TLM_UPDATED, BEGIN_RESP, t
 		else if (ret == TLM_UPDATED && phase == BEGIN_RESP) {
-			LOG(DEBUG) << "TLM_UPDATED, END_REQ, t  m_send_end_resp_peq.notify(t)   wait(t)";
+			LOG(DEBUG) << "TLM_UPDATED, BEGIN_RESP, t  m_send_end_resp_peq.notify(t)   wait(t)";
 			// Wait the annotated delay
 			// Use payload event queue to schedule sending end response
 			// Make the next request

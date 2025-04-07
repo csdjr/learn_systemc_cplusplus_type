@@ -29,7 +29,7 @@ public:
 	    : sc_export() {}
 };
 
-// ------------------ Export ------------------
+// ------------------ Channel ------------------
 class Channel : public MyIF {
 public:
 	virtual int read(int idx) {

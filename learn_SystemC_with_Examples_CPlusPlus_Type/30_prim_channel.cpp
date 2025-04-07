@@ -38,10 +38,10 @@ private:
 
 //----------------------------------------------------------------------------
 // 使用port<IF>的类
-class GenInterrupt : public sc_module {
+class Receiver : public sc_module {
 public:
-	SC_HAS_PROCESS(GenInterrupt);
-	GenInterrupt(sc_module_name name)
+	SC_HAS_PROCESS(Receiver);
+	Receiver(sc_module_name name)
 	    : sc_module(name) {
 		SC_THREAD(rcv_interrupt);
 	}
@@ -58,10 +58,10 @@ private:
 	}
 };
 
-class Receiver : public sc_module {
+class GenInterrupt : public sc_module {
 public:
-	SC_HAS_PROCESS(Receiver);
-	Receiver(sc_module_name name)
+	SC_HAS_PROCESS(GenInterrupt);
+	GenInterrupt(sc_module_name name)
 	    : sc_module(name) {
 		SC_THREAD(gen_interrupt);
 	}
