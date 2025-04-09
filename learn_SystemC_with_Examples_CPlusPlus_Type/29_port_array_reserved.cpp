@@ -98,5 +98,6 @@ int sc_main(int, char*[]) {
     reader.p9[i](s9[i]);
   }
   sc_start(2, SC_SEC);
-  return 0;
+  LOG(INFO) << "Sim Completed.";
+	return 0;
 }

@@ -273,5 +273,6 @@ int sc_main(int, char*[]) {
 	AT_Slave s{"s"};
 	m.initiator_socket.bind(s.target_socket);
 	sc_start();
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

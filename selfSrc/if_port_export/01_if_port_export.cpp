@@ -83,5 +83,6 @@ int sc_main(int, char*[]) {
 	a.p.bind(b1.p);
 	a.p.bind(b2.p);
 	sc_start(8, SC_SEC);
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

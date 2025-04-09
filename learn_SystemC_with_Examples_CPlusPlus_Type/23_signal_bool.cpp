@@ -58,5 +58,6 @@ int sc_main(int, char*[]) {
 	init_single_file_log(__FILE__);
 	MyModule m("m");
 	sc_start(4, SC_SEC);
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

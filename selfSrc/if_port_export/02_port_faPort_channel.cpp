@@ -77,5 +77,6 @@ int sc_main(int, char*[]) {
 	Chnl chnl;
 	fa_m.fa_p.bind(chnl); // 父Module的sc_port，绑定channel
 	sc_start();
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

@@ -76,5 +76,6 @@ int sc_main(int, char*[]) {
 	init_single_file_log(__FILE__);
   FIFO fifo("fifo");
   sc_start(10, SC_SEC);
-  return 0;
+  LOG(INFO) << "Sim Completed.";
+	return 0;
 }

@@ -673,5 +673,6 @@ int sc_main(int, char*[]) {
 	bus.initiator_socket.bind(slave.target_socket);
 
 	sc_start();
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

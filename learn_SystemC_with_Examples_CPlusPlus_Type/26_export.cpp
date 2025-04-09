@@ -58,5 +58,6 @@ int sc_main(int, char*[]) {
 	MyModule2 m2("m2");
 	m2.p.bind(m1.p); // port which has pointer of IF, bind port which has already bind channel that has implemented IF.
 	sc_start(8, SC_SEC);
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

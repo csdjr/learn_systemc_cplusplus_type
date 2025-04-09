@@ -84,5 +84,6 @@ int sc_main(int, char*[]) {
 	ma.p.bind(chnl);
 	mb.ep.bind(chnl);
 	sc_start();
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

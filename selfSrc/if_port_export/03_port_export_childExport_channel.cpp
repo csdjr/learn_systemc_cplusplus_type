@@ -83,5 +83,6 @@ int sc_main(int, char*[]) {
 	init_single_file_log(__FILE__);
 	FaModuel fa_m{"faM"};
 	sc_start();
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

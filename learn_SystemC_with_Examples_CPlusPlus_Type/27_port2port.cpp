@@ -87,6 +87,7 @@ int sc_main(int, char*[]) {
 	m1.p(s);
 	m2.p(s);
 	sc_start(8, SC_SEC);
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }
 

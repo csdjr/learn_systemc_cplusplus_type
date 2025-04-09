@@ -86,5 +86,6 @@ int sc_main(int, char*[]) {
 	gen.p(intrChannel);
 	rcv.p(intrChannel);
 	sc_start(8, SC_SEC);
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

@@ -47,5 +47,6 @@ int sc_main(int, char*[]) {
 	init_single_file_log(__FILE__);
 	RESOLVED_SIGNAL resolved("resolved");
 	sc_start(17, SC_SEC); // runs sufficient time to test all 16 resolve combinations
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }

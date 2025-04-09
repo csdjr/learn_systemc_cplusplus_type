@@ -64,6 +64,7 @@ int sc_main(int, char*[]) {
 	m1.p.bind(s); // port bind channel
 	m2.p(s);      // port bind channel
 	sc_start(8, SC_SEC);
+	LOG(INFO) << "Sim Completed.";
 	return 0;
 }
 
